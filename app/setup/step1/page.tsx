@@ -32,7 +32,7 @@ export default function SetupStep1() {
                 {/* Main */}
                 <main className="flex items-center justify-center h-screen bg-zinc-300">
                     {/* Box */}
-                    <div className="flex flex-col p-2 mx-6 rounded-2xl  bg-zinc-200 w-1/2 h-1/3 m-0 p-0">
+                    <div className="flex flex-col mx-6 rounded-2xl bg-zinc-200 w-1/2 h-1/3 m-0 p-0">
                         {/* Instruction */}
                         <div className="flex flex-col md:flex-row bg-zinc-100 rounded-t-lg m-0 p-2">
                             <div className="text-2xl font-medium ">Step 1</div>
