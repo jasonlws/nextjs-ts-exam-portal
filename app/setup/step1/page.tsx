@@ -40,11 +40,7 @@ export default function SetupStep1() {
                         {/* Content */}
                         <div className="flex flex-col items-center text-xl h-full font-medium m-2">
                             <input type="file" onChange={handleChange} />
-                            Lorem ipsum dolor, sit amet consectetur adipisicing
-                            elit. Exercitationem ipsam voluptatum quod
-                            laboriosam, libero suscipit ratione magni sequi
-                            harum! Quisquam dolores et consectetur minus aliquid
-                            dolorum eius, placeat modi assumenda. {question}
+                            <p>Context: {question}</p>
                             <button onClick={updateQuestion}>Test</button>
                         </div>
                         {/* Start */}
