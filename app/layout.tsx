@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "@/styles/globals.css";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -22,6 +23,9 @@ export default function RootLayout({
         <html lang="en" className="scroll-smooth">
             <body className={inter.className}>
                 <QuestionContextProvider>{children}</QuestionContextProvider>
+                {process.env.GA_MEASUREMENT_ID && (
+                    <GoogleAnalytics gaId={process.env.GA_MEASUREMENT_ID} />
+                )}
             </body>
         </html>
     );
