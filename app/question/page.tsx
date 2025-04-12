@@ -1,3 +1,6 @@
+import TimerComponent from "@/components/Timer/TimerComponent";
+import LinkButtonComponent from "@/components/Button/LinkButtonComponent";
+
 export default function Question() {
     return (
         <>
@@ -5,7 +8,11 @@ export default function Question() {
                 {/* Header */}
                 <header className="flex flex-row justify-between w-full text-center border-b border-grey p-4">
                     <div className="">Name</div>
-                    <div className="">Time Remaining: 00:00</div>
+                    <div className="">
+                        <TimerComponent
+                            countDownDate={new Date().getTime() + 100000}
+                        />
+                    </div>
                 </header>
                 {/* Main */}
                 <main className="flex flex-col justify-center h-screen bg-zinc-300">

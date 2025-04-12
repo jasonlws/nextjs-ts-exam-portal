@@ -1,15 +1,14 @@
 import Link from "next/link";
-import HeaderComponent from "@/components/header/header";
-import FooterComponent from "@/components/footer/footer";
+import HeaderComponent from "@/components/Header/HeaderComponent";
+import FooterComponent from "@/components/Footer/FooterComponent";
+import LinkButtonComponent from "@/components/Button/LinkButtonComponent";
 
 export default function SetupPage() {
     return (
         <>
             <div className="flex flex-col h-screen overflow-hidden">
                 {/* Header */}
-                <header className="w-full text-center border-b border-grey">
-                    <HeaderComponent />
-                </header>
+                <HeaderComponent />
                 {/* Main */}
                 <main className="flex items-center justify-center h-screen bg-zinc-300">
                     {/* Box */}
@@ -30,21 +29,14 @@ export default function SetupPage() {
                         </div>
                         {/* Start */}
                         <div className="group flex flex-col justify-center md:space-y-0 md:space-x-4 md:flex-row m-0 p-4">
-                            <Link
-                                href="/setup/step1"
-                                className="trasition-all duration-150 bg-blue-700 text-white border-b-8 border-b-blue-700 rounded-lg w-3/12 group-hover:border-t-8 group-hover:border-b-0 group-hover:bg-blue-700 group-hover:border-t-blue-700 group-hover:shadow-lg"
-                            >
-                                <div className="px-8 py-4 duration-150 bg-blue-500 rounded-lg group-hover:bg-blue-700 text-center">
-                                    Start
-                                </div>
-                            </Link>
+                            <LinkButtonComponent href="/setup/step1">
+                                Start
+                            </LinkButtonComponent>
                         </div>
                     </div>
                 </main>
                 {/* Footer */}
-                <footer className="w-full text-center border-t border-gery p-4">
-                    <FooterComponent />
-                </footer>
+                <FooterComponent />
             </div>
         </>
     );

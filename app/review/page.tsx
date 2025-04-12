@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -7,7 +9,11 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 library.add(far, fas, fab);
 
+import { useQuestions } from "@/context/questions/QuestionsContext";
+
 export default function ReviewPage() {
+    const { questions } = useQuestions();
+
     return (
         <>
             {" "}
@@ -31,27 +37,31 @@ export default function ReviewPage() {
                             <div className="">(14 unseen/Incomplete)</div>
                         </div>
                         <div className="flex flex-col">
-                            <div className="flex flex-row group  odd:bg-red-800 even:bg-green-800">
-                                <div className="flex-none w-16">
-                                    <FontAwesomeIcon icon={["fas", "flag"]} />
-                                </div>
-                                <div className="flex-auto">Question 1</div>
-                                <div className="flex-auto">Incomplete</div>
-                            </div>
-                            <div className="flex flex-row group  odd:bg-red-800 even:bg-green-800">
-                                <div className="flex-none w-16">
-                                    <FontAwesomeIcon icon={["fas", "flag"]} />
-                                </div>
-                                <div className="flex-auto">Question 1</div>
-                                <div className="flex-auto">Incomplete</div>
-                            </div>
-                            <div className="flex flex-row group  odd:bg-red-800 even:bg-green-800">
-                                <div className="flex-none w-16">
-                                    <FontAwesomeIcon icon={["fas", "flag"]} />
-                                </div>
-                                <div className="flex-auto">Question 1</div>
-                                <div className="flex-auto">Incomplete</div>
-                            </div>
+                            {questions.map((question) => (
+                                <>
+                                    <div className="flex flex-row group  odd:bg-red-800 even:bg-green-800">
+                                        <div className="flex-none w-16">
+                                            {question.flagged ? (
+                                                <FontAwesomeIcon
+                                                    icon={["fas", "flag"]}
+                                                />
+                                            ) : (
+                                                <FontAwesomeIcon
+                                                    icon={["far", "flag"]}
+                                                />
+                                            )}
+                                        </div>
+                                        <div className="flex-auto">
+                                            Question {question.id}
+                                        </div>
+                                        <div className="flex-auto">
+                                            {question.selects.length == 0
+                                                ? "Incomplete"
+                                                : "Completed"}
+                                        </div>
+                                    </div>
+                                </>
+                            ))}
                         </div>
                     </div>
                 </main>

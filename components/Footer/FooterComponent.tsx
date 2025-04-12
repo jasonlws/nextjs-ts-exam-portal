@@ -7,10 +7,12 @@ library.add(far, fas);
 export default function FooterComponent() {
     return (
         <>
-            <div>
-                Copyright <FontAwesomeIcon icon={["far", "copyright"]} /> 2023
-                Jason Leung All rights reserved.
-            </div>
+            <footer className="w-full text-center border-t border-gery p-4">
+                <div>
+                    Copyright <FontAwesomeIcon icon={["far", "copyright"]} />{" "}
+                    2023 Jason Leung All rights reserved.
+                </div>
+            </footer>
         </>
     );
 }

@@ -1,13 +1,14 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
-import HeaderComponent from "@/components/header/header";
-import FooterComponent from "@/components/footer/footer";
-import { useQuestion } from "@/context/question-context";
+import HeaderComponent from "@/components/Header/HeaderComponent";
+import FooterComponent from "@/components/Footer/FooterComponent";
+import { useQuestions } from "@/context/questions/QuestionsContext";
+import LinkButtonComponent from "@/components/Button/LinkButtonComponent";
 
 export default function SetupStep1() {
     const [files, setFiles] = useState("");
-    const { question, updateQuestion } = useQuestion();
+    const { questions } = useQuestions();
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const fileReader = new FileReader();
@@ -26,9 +27,7 @@ export default function SetupStep1() {
         <>
             <div className="flex flex-col h-screen overflow-hidden">
                 {/* Header */}
-                <header className="w-full text-center border-b border-grey p-4">
-                    <HeaderComponent />
-                </header>
+                <HeaderComponent />
                 {/* Main */}
                 <main className="flex items-center justify-center h-screen bg-zinc-300">
                     {/* Box */}
@@ -40,34 +39,24 @@ export default function SetupStep1() {
                         {/* Content */}
                         <div className="flex flex-col items-center text-xl h-full font-medium m-2">
                             <input type="file" onChange={handleChange} />
-                            <p>Context: {question}</p>
-                            <button onClick={updateQuestion}>Test</button>
+                            <p>
+                                Context:{" "}
+                                {questions.map((question) => question.id)}
+                            </p>
                         </div>
                         {/* Start */}
                         <div className="flex flex-col justify-end md:space-y-0 md:space-x-4 md:flex-row p-4">
-                            <Link
-                                href="/setup"
-                                className="trasition-all duration-150 bg-blue-700 text-white border-b-8 border-b-blue-700 rounded-lg w-3/12 hover:border-t-8 hover:border-b-0 hover:bg-blue-700 hover:border-t-blue-700 hover:shadow-lg"
-                            >
-                                <div className="px-8 py-4 duration-150 bg-blue-500 rounded-lg group-hover:bg-blue-700 text-center">
-                                    Back
-                                </div>
-                            </Link>
-                            <Link
-                                href="/setup/step2"
-                                className="trasition-all duration-150 bg-blue-700 text-white border-b-8 border-b-blue-700 rounded-lg w-3/12 hover:border-t-8 hover:border-b-0 hover:bg-blue-700 hover:border-t-blue-700 hover:shadow-lg"
-                            >
-                                <div className="px-8 py-4 duration-150 bg-blue-500 rounded-lg group-hover:bg-blue-700 text-center">
-                                    Next
-                                </div>
-                            </Link>
+                            <LinkButtonComponent href="/setup">
+                                Back
+                            </LinkButtonComponent>
+                            <LinkButtonComponent href="/setup/step2">
+                                Next
+                            </LinkButtonComponent>
                         </div>
                     </div>
                 </main>
                 {/* Footer */}
-                <footer className="w-full text-center border-t border-gery p-4">
-                    <FooterComponent />
-                </footer>
+                <FooterComponent />
             </div>
         </>
     );
